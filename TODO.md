@@ -1,0 +1,1 @@
+# TODO: Fix blogs table column error&#10;&#10;- [x] 1. Run `php artisan migrate` to execute pending migration adding content/author columns.&#10;- [x] 2. Verify schema: `php artisan tinker --execute="print_r(Schema::getColumnListing(&#39;blogs&#39;));"` (confirmed: id, title, content, author, description, created_at, updated_at)&#10;- [ ] 3. Test blog update form.&#10;
