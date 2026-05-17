@@ -17,7 +17,7 @@
                     <th>Nama</th>
                     <th>Email</th>
                     <th>Fakultas</th>
-                    <th>PA</th>
+                    <th>DPA</th>
                     <th>Status</th>
                     <th>Aksi</th>
                 </tr>
