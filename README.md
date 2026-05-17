@@ -45,7 +45,7 @@ SIAKAD (Sistem Informasi Akademik) adalah aplikasi manajemen akademik berbasis w
 
 ## Teknologi yang Digunakan
 
-- **Framework**: Laravel 11
+- **Framework**: Laravel 13
 - **Database**: MySQL
 - **Backend**: PHP 8.3+
 - **Frontend**: Blade Templating
