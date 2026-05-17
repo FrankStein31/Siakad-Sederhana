@@ -16,6 +16,6 @@ class Dosen extends Model
 
     public function mahasiswas()
     {
-        return $this->hasMany(Mahasiswa::class);
+        return $this->hasMany(Mahasiswa::class)->where('status', 'Aktif');
     }
 }

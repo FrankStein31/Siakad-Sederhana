@@ -14,7 +14,7 @@ class DashboardController extends Controller
         $stats = [
             'fakultas' => Fakultas::count(),
             'dosen' => Dosen::count(),
-            'mahasiswa' => Mahasiswa::count(),
+            'mahasiswa' => Mahasiswa::where('status', 'Aktif')->count(),
             'mataKuliah' => MataKuliah::count(),
         ];
         return view('dashboard.index', compact('stats'));

@@ -33,7 +33,8 @@
                         <td>{{ $item->dosen ? $item->dosen->nama : '-' }}</td>
                         <td>{{ $item->status }}</td>
                         <td>
-                            <a href="{{ route('mahasiswa.edit', $item->id) }}" class="btn btn-info">Edit</a>
+                            <a href="{{ route('mahasiswa.show', $item->id) }}" class="btn btn-info">Detail</a>
+                            <a href="{{ route('mahasiswa.edit', $item->id) }}" class="btn btn-warning">Edit</a>
                             <form action="{{ route('mahasiswa.destroy', $item->id) }}" method="POST" style="display: inline;">
                                 @csrf
                                 @method('DELETE')

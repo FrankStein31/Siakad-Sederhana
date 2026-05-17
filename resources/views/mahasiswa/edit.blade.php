@@ -39,7 +39,13 @@
                     @endforeach
                 </select>
             </div>
-            <div class="form-actions">
+            <div class="form-group">
+                <label>Status</label>
+                <select name="status" required>
+                    <option value="Aktif" {{ $mahasiswa->status == 'Aktif' ? 'selected' : '' }}>Aktif</option>
+                    <option value="Tidak Aktif" {{ $mahasiswa->status == 'Tidak Aktif' ? 'selected' : '' }}>Tidak Aktif</option>
+                </select>
+            </div>
                 <button type="submit" class="btn">Simpan</button>
                 <a href="{{ route('mahasiswa.index') }}" class="btn" style="background: #666;">Batal</a>
             </div>

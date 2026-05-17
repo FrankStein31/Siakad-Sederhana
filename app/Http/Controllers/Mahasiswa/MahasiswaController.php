@@ -16,6 +16,12 @@ class MahasiswaController extends Controller
         return view('mahasiswa.index', compact('data'));
     }
 
+    public function show(Mahasiswa $mahasiswa)
+    {
+        $mahasiswa->load('fakultas', 'dosen', 'mataKuliahs');
+        return view('mahasiswa.show', compact('mahasiswa'));
+    }
+
     public function create()
     {
         $fakultas = Fakultas::all();
@@ -50,9 +56,10 @@ class MahasiswaController extends Controller
             'nama' => 'required',
             'email' => 'required|email|unique:mahasiswas,email,' . $mahasiswa->id,
             'fakultas_id' => 'required|exists:fakultas,id',
-            'dosen_id' => 'nullable|exists:dosens,id'
+            'dosen_id' => 'nullable|exists:dosens,id',
+            'status' => 'required|in:Aktif,Tidak Aktif'
         ]);
-        $mahasiswa->update($request->only('nim', 'nama', 'email', 'fakultas_id', 'dosen_id'));
+        $mahasiswa->update($request->only('nim', 'nama', 'email', 'fakultas_id', 'dosen_id', 'status'));
         return redirect()->route('mahasiswa.index');
     }
 
