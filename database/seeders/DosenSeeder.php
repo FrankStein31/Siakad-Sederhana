@@ -11,22 +11,22 @@ class DosenSeeder extends Seeder
     {
         Dosen::create([
             'nip' => '198501012010011001',
-            'nama' => 'Dr. Izaiah Bogisich',
+            'nama' => 'Benni',
             'fakultas_id' => 1
         ]);
         Dosen::create([
             'nip' => '197803152005012002',
-            'nama' => 'Gianni Rice',
+            'nama' => 'Luluk',
             'fakultas_id' => 1
         ]);
         Dosen::create([
             'nip' => '196912201998031003',
-            'nama' => 'Oliver Okuneva',
+            'nama' => 'Suwandi',
             'fakultas_id' => 3
         ]);
         Dosen::create([
             'nip' => '198207082009012004',
-            'nama' => 'Aryanna Stoltenberg',
+            'nama' => 'Fadelis',
             'fakultas_id' => 3
         ]);
     }

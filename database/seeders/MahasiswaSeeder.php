@@ -11,32 +11,32 @@ class MahasiswaSeeder extends Seeder
     {
         Mahasiswa::create([
             'nim' => '20267422',
-            'nama' => 'Elisa Senger',
-            'email' => 'elisa@example.org',
+            'nama' => 'Frankie',
+            'email' => 'frankie@gmail.com',
             'fakultas_id' => 1,
             'dosen_id' => 1,
             'status' => 'Aktif'
         ]);
         Mahasiswa::create([
             'nim' => '20268703',
-            'nama' => 'Arielle Cummings',
-            'email' => 'arielle@example.org',
+            'nama' => 'Clarissa',
+            'email' => 'clarissa@gmail.com',
             'fakultas_id' => 2,
             'dosen_id' => 2,
             'status' => 'Aktif'
         ]);
         Mahasiswa::create([
             'nim' => '20265699',
-            'nama' => 'Lottie McCullough',
-            'email' => 'lottie@example.org',
+            'nama' => 'Ananda',
+            'email' => 'ananda@gmail.com',
             'fakultas_id' => 1,
             'dosen_id' => 1,
             'status' => 'Aktif'
         ]);
         Mahasiswa::create([
             'nim' => '20263429',
-            'nama' => 'Dr. Bruce Cassin MD',
-            'email' => 'bruce@example.org',
+            'nama' => 'Julius',
+            'email' => 'julius@gmail.com',
             'fakultas_id' => 3,
             'dosen_id' => 3,
             'status' => 'Aktif'
