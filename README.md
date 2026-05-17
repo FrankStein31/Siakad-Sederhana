@@ -63,8 +63,8 @@ SIAKAD (Sistem Informasi Akademik) adalah aplikasi manajemen akademik berbasis w
 
 ### 1. Clone Repository
 ```bash
-git clone <repository-url>
-cd Irza_40
+git clone <repository-url> <nama_folder_anda>
+cd <nama_folder_anda>
 ```
 
 ### 2. Install Dependencies
