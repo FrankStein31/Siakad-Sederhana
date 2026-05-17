@@ -2,30 +2,25 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Mahasiswa extends Model
 {
-    use HasFactory;
+    protected $fillable = ['nim', 'nama', 'email', 'fakultas_id', 'dosen_id', 'status'];
+    protected $table = 'mahasiswas';
 
-    protected $table = 'mahasiswa';
-
-    protected $fillable = [
-        'nim',
-        'nama',
-        'email',
-        'jurusan',
-        'angkatan',
-        'user_id'
-    ];
-
-    public function user()
+    public function fakultas()
     {
-        return $this->belongsTo(\App\Models\User::class);
+        return $this->belongsTo(Fakultas::class);
     }
 
-    protected $casts = [
-        'angkatan' => 'integer',
-    ];
+    public function dosen()
+    {
+        return $this->belongsTo(Dosen::class);
+    }
+
+    public function mataKuliahs()
+    {
+        return $this->belongsToMany(MataKuliah::class, 'krses', 'mahasiswa_id', 'mata_kuliah_id');
+    }
 }

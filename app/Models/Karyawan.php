@@ -2,25 +2,11 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Karyawan extends Model
 {
-    use HasFactory;
-
-    protected $table = 'karyawan';
-
-    protected $fillable = [
-        'name',
-        'alamat',
-        'no_telp',
-        'jenis_kelamin',
-        'user_id'
-    ];
-
-    public function user()
-    {
-        return $this->belongsTo(\App\Models\User::class);
-    }
+    protected $fillable = ['nama', 'email', 'posisi'];
+    protected $table = 'karyawans';
+}
 }

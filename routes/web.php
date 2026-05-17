@@ -1,27 +1,23 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\Fakultas\FakultasController;
+use App\Http\Controllers\Dosen\DosenController;
+use App\Http\Controllers\Mahasiswa\MahasiswaController;
+use App\Http\Controllers\MataKuliah\MataKuliahController;
+use App\Http\Controllers\Krs\KrsController;
 
-use App\Http\Controllers\BlogController;
-use App\Http\Controllers\DosenController;
-use App\Http\Controllers\KaryawanController;
-use App\Http\Controllers\MahasiswaController;
+Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::resource('fakultas', FakultasController::class);
+Route::resource('dosen', DosenController::class);
+Route::resource('mahasiswa', MahasiswaController::class);
+Route::resource('mata_kuliah', MataKuliahController::class);
 
-Route::resource('blogs', BlogController::class);
+Route::get('/krs', [KrsController::class, 'index'])->name('krs.index');
+Route::get('/krs/{mahasiswa}/edit', [KrsController::class, 'edit'])->name('krs.edit');
+Route::put('/krs/{mahasiswa}', [KrsController::class, 'update'])->name('krs.update');
 
-// Soft delete (trashed) & restore
-Route::get('/blogs/trashed', [BlogController::class, 'trashed'])->name('blogs.trashed');
 
-// restore: dukung PUT dan POST (form HTML kadang POST)
-Route::match(['put', 'post'], '/blogs/{id}/restore', [BlogController::class, 'restore'])->name('blogs.restore');
-
-Route::delete('/blogs/{id}/force-delete', [BlogController::class, 'forceDelete'])->name('blogs.forceDelete');
-
-Route::resource('mahasiswas', MahasiswaController::class);
-Route::resource('dosens', DosenController::class);
-Route::resource('karyawans', KaryawanController::class);
 

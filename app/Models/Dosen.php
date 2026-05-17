@@ -2,24 +2,20 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Dosen extends Model
 {
-    use HasFactory;
+    protected $fillable = ['nip', 'nama', 'fakultas_id'];
+    protected $table = 'dosens';
 
-    protected $table = 'dosen';
-
-    protected $fillable = [
-        'nisn',
-        'nama',
-        'email',
-        'user_id'
-    ];
-
-    public function user()
+    public function fakultas()
     {
-        return $this->belongsTo(\App\Models\User::class);
+        return $this->belongsTo(Fakultas::class);
+    }
+
+    public function mahasiswas()
+    {
+        return $this->hasMany(Mahasiswa::class);
     }
 }
