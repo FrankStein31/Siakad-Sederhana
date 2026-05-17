@@ -21,7 +21,7 @@ class MahasiswaSeeder extends Seeder
             'nim' => '20268703',
             'nama' => 'Clarissa',
             'email' => 'clarissa@gmail.com',
-            'fakultas_id' => 2,
+            'fakultas_id' => 1,
             'dosen_id' => 2,
             'status' => 'Aktif'
         ]);
