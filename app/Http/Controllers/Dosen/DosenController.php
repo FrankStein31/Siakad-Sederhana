@@ -11,7 +11,7 @@ class DosenController extends Controller
 {
     public function index()
     {
-        $data = Dosen::with('fakultas')->get();
+        $data = Dosen::with('fakultas', 'mahasiswas')->get();
         return view('dosen.index', compact('data'));
     }
 
@@ -53,5 +53,17 @@ class DosenController extends Controller
     {
         $dosen->delete();
         return back();
+    }
+
+    public function show(Dosen $dosen)
+    {
+        $dosen->load('fakultas', 'mahasiswas');
+        return view('dosen.show', compact('dosen'));
+    }
+
+    public function getByFakultas($fakultasId)
+    {
+        $dosens = Dosen::where('fakultas_id', $fakultasId)->get(['id', 'nama']);
+        return response()->json($dosens);
     }
 }

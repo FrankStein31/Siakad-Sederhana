@@ -19,5 +19,7 @@ Route::get('/krs', [KrsController::class, 'index'])->name('krs.index');
 Route::get('/krs/{mahasiswa}/edit', [KrsController::class, 'edit'])->name('krs.edit');
 Route::put('/krs/{mahasiswa}', [KrsController::class, 'update'])->name('krs.update');
 
+Route::get('/api/dosen/{fakultas_id}', [DosenController::class, 'getByFakultas'])->name('dosen.by-fakultas');
+
 
 

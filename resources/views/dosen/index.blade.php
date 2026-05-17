@@ -16,6 +16,7 @@
                     <th>NIP</th>
                     <th>Nama</th>
                     <th>Fakultas</th>
+                    <th>Jumlah Mahasiswa</th>
                     <th>Aksi</th>
                 </tr>
             </thead>
@@ -26,8 +27,10 @@
                         <td>{{ $item->nip }}</td>
                         <td>{{ $item->nama }}</td>
                         <td>{{ $item->fakultas->nama }}</td>
+                        <td><strong>{{ $item->mahasiswas->count() }}</strong></td>
                         <td>
-                            <a href="{{ route('dosen.edit', $item->id) }}" class="btn btn-info">Edit</a>
+                            <a href="{{ route('dosen.show', $item->id) }}" class="btn btn-info">Detail</a>
+                            <a href="{{ route('dosen.edit', $item->id) }}" class="btn btn-warning">Edit</a>
                             <form action="{{ route('dosen.destroy', $item->id) }}" method="POST" style="display: inline;">
                                 @csrf
                                 @method('DELETE')
