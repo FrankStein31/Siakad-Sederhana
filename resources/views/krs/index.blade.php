@@ -6,6 +6,17 @@
     <div class="card">
         <h2>Kelola KRS</h2>
 
+        <!-- Search Form -->
+        <form method="GET" action="{{ route('krs.index') }}" style="margin-bottom: 1.5rem;">
+            <div style="display: flex; gap: 0.5rem;">
+                <input type="text" name="search" placeholder="Cari NIM atau Nama..." value="{{ request('search') }}" style="flex: 1; padding: 0.5rem; border: 1px solid #ddd; border-radius: 4px;">
+                <button type="submit" class="btn">Cari</button>
+                @if(request('search'))
+                    <a href="{{ route('krs.index') }}" class="btn" style="background-color: #6c757d;">Reset</a>
+                @endif
+            </div>
+        </form>
+
         <table>
             <thead>
                 <tr>
@@ -21,7 +32,7 @@
             <tbody>
                 @foreach ($mahasiswas as $item)
                     <tr>
-                        <td>{{ $loop->iteration }}</td>
+                        <td>{{ ($mahasiswas->currentPage() - 1) * $mahasiswas->perPage() + $loop->iteration }}</td>
                         <td>{{ $item->nim }}</td>
                         <td>{{ $item->nama }}</td>
                         <td>{{ $item->fakultas->nama }}</td>
@@ -52,5 +63,10 @@
                 @endforeach
             </tbody>
         </table>
+
+        <!-- Pagination -->
+        <div style="margin-top: 1.5rem; display: flex; justify-content: flex-end;">
+            {{ $mahasiswas->links() }}
+        </div>
     </div>
 @endsection

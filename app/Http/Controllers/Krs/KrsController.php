@@ -10,10 +10,16 @@ use Illuminate\Http\Request;
 
 class KrsController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $mahasiswas = Mahasiswa::all();
-        return view('krs.index', compact('mahasiswas'));
+        $search = $request->get('search');
+        $mahasiswas = Mahasiswa::with('fakultas')
+            ->when($search, function ($query) use ($search) {
+                $query->where('nim', 'like', '%' . $search . '%')
+                      ->orWhere('nama', 'like', '%' . $search . '%');
+            })
+            ->paginate(10);
+        return view('krs.index', compact('mahasiswas', 'search'));
     }
 
     public function edit(Mahasiswa $mahasiswa)

@@ -52,6 +52,14 @@
         .checkbox-item label { cursor: pointer; display: flex; flex-direction: column; }
         .checkbox-item strong { color: #1a1a1a; }
         .checkbox-item small { color: #666; }
+        /* Pagination Styles */
+        nav ul.pagination { display: flex; justify-content: flex-end; gap: 0; list-style: none; margin: 2rem 0; flex-wrap: wrap; padding: 0; }
+        .pagination li { display: inline-block; margin: 0; }
+        .pagination li span, .pagination li a { display: inline-block; padding: 0.6rem 0.9rem; margin: 0 2px 0 0; border: 1px solid #ddd; border-radius: 4px; color: #1a1a1a; text-decoration: none; transition: all 0.3s ease; background: white; font-size: 0.9rem; font-weight: 500; }
+        .pagination li a { cursor: pointer; }
+        .pagination li a:hover { background: #1a1a1a; color: white; border-color: #1a1a1a; }
+        .pagination li.active span { background: #1a1a1a; color: white; border-color: #1a1a1a; padding: 0.6rem 0.9rem; }
+        .pagination li.disabled span { color: #999; background: #f5f5f5; border-color: #ddd; cursor: not-allowed; }
     </style>
 </head>
 <body>

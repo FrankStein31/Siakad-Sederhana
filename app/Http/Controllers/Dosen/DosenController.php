@@ -9,10 +9,16 @@ use Illuminate\Http\Request;
 
 class DosenController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $data = Dosen::with('fakultas', 'mahasiswas')->get();
-        return view('dosen.index', compact('data'));
+        $search = $request->get('search');
+        $data = Dosen::with('fakultas', 'mahasiswas')
+            ->when($search, function ($query) use ($search) {
+                $query->where('nip', 'like', '%' . $search . '%')
+                      ->orWhere('nama', 'like', '%' . $search . '%');
+            })
+            ->paginate(10);
+        return view('dosen.index', compact('data', 'search'));
     }
 
     public function create()

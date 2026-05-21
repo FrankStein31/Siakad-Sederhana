@@ -8,10 +8,14 @@ use Illuminate\Http\Request;
 
 class FakultasController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $data = Fakultas::all();
-        return view('fakultas.index', compact('data'));
+        $search = $request->get('search');
+        $data = Fakultas::when($search, function ($query) use ($search) {
+            $query->where('nama', 'like', '%' . $search . '%');
+        })
+        ->paginate(10);
+        return view('fakultas.index', compact('data', 'search'));
     }
 
     public function create()

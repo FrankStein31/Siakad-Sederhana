@@ -10,10 +10,17 @@ use Illuminate\Http\Request;
 
 class MahasiswaController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $data = Mahasiswa::with('fakultas', 'dosen')->get();
-        return view('mahasiswa.index', compact('data'));
+        $search = $request->get('search');
+        $data = Mahasiswa::with('fakultas', 'dosen')
+            ->when($search, function ($query) use ($search) {
+                $query->where('nim', 'like', '%' . $search . '%')
+                      ->orWhere('nama', 'like', '%' . $search . '%')
+                      ->orWhere('email', 'like', '%' . $search . '%');
+            })
+            ->paginate(10);
+        return view('mahasiswa.index', compact('data', 'search'));
     }
 
     public function show(Mahasiswa $mahasiswa)

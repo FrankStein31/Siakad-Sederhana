@@ -9,6 +9,17 @@
             <a href="{{ route('mahasiswa.create') }}" class="btn">+ Tambah Mahasiswa</a>
         </div>
 
+        <!-- Search Form -->
+        <form method="GET" action="{{ route('mahasiswa.index') }}" style="margin-bottom: 1.5rem;">
+            <div style="display: flex; gap: 0.5rem;">
+                <input type="text" name="search" placeholder="Cari NIM, Nama, atau Email..." value="{{ request('search') }}" style="flex: 1; padding: 0.5rem; border: 1px solid #ddd; border-radius: 4px;">
+                <button type="submit" class="btn">Cari</button>
+                @if(request('search'))
+                    <a href="{{ route('mahasiswa.index') }}" class="btn" style="background-color: #6c757d;">Reset</a>
+                @endif
+            </div>
+        </form>
+
         <table>
             <thead>
                 <tr>
@@ -25,7 +36,7 @@
             <tbody>
                 @foreach ($data as $item)
                     <tr>
-                        <td>{{ $loop->iteration }}</td>
+                        <td>{{ ($data->currentPage() - 1) * $data->perPage() + $loop->iteration }}</td>
                         <td>{{ $item->nim }}</td>
                         <td>{{ $item->nama }}</td>
                         <td>{{ $item->email }}</td>
@@ -45,5 +56,10 @@
                 @endforeach
             </tbody>
         </table>
+
+        <!-- Pagination -->
+        <div style="margin-top: 1.5rem; display: flex; justify-content: flex-end;">
+            {{ $data->links() }}
+        </div>
     </div>
 @endsection
